@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Snake 99 Reborn</title>
+    <meta name="description" content="Get help and support for Snake 99 Reborn. FAQs, contact information, and troubleshooting guides.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --green-primary: #22c55e;
+            --green-secondary: #16a34a;
+            --green-glow: rgba(34, 197, 94, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --orange: #f97316;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: var(--green-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--green-primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--green-primary);
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-primary);
+            color: var(--bg-primary);
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: var(--green-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--green-primary);
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--green-primary);
+        }
+
+        .faq-question span {
+            font-size: 1.25rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Troubleshooting */
+        .troubleshooting {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .troubleshooting h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+        }
+
+        .troubleshooting ul {
+            list-style: none;
+        }
+
+        .troubleshooting li {
+            padding: 0.75rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .troubleshooting li:last-child {
+            border-bottom: none;
+        }
+
+        .troubleshooting li::before {
+            content: "✓";
+            color: var(--green-primary);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-primary);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--green-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🐍 SNAKE 99</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>SUPPORT</h1>
+        <p>Need help? We're here for you! Find answers to common questions or reach out to our team.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2>📧 Contact Us</h2>
+            <p>Have a question, feedback, or issue? We'd love to hear from you! Our team typically responds within 24-48 hours.</p>
+            <a href="mailto:snrgwa@gmail.com?subject=Snake%2099%20Reborn%20Support" class="contact-btn">
+                ✉️ Email Support
+            </a>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>FREQUENTLY ASKED QUESTIONS</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I control the snake?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        You can control the snake in two ways: <strong>Swipe gestures</strong> — simply swipe up, down, left, or right anywhere on the screen. Or use the <strong>on-screen buttons</strong> at the bottom of the screen. You can enable/disable the control buttons in Settings.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How many levels are there?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        There are <strong>99 levels</strong> in total! Each level increases the snake's speed, making the game progressively more challenging. Level 1 is the slowest, and Level 99 is incredibly fast. Can you beat them all?
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I complete a level?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Collect <strong>50 apples</strong> to complete each level. A progress bar at the top of the screen shows how many apples you've collected. Once you reach 50, you'll advance to the next level!
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do lives work?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        You start with <strong>5 lives</strong>. You lose a life when you hit a wall or your own tail. When you run out of lives, you can: <strong>Wait</strong> (1 minute per life), <strong>Watch an ad</strong> for an instant life, or <strong>Go Premium</strong> for unlimited lives.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I earn extra lives?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Collect <strong>25 apples</strong> in a single game session to earn an extra life (up to a maximum of 5 lives). A celebration animation will play when you earn a life!
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What is Unlimited Lives?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Unlimited Lives is our premium feature that lets you play without ever waiting for lives to regenerate. Choose between a <strong>monthly subscription ($0.99/month)</strong> or a <strong>one-time lifetime purchase ($2.99)</strong>. You can cancel the subscription anytime.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I restore my purchases?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Go to <strong>Settings</strong> in the app and tap <strong>"Restore Purchases"</strong>. Make sure you're signed into the same Apple ID you used to make the original purchase. Your Unlimited Lives subscription will be restored automatically.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I cancel my subscription?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        To cancel your subscription: Open the <strong>Settings app</strong> on your iPhone → Tap your <strong>Apple ID</strong> at the top → Tap <strong>Subscriptions</strong> → Select <strong>Snake 99 Reborn</strong> → Tap <strong>Cancel Subscription</strong>. You'll continue to have access until the end of your billing period.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Does the game require internet?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <strong>No!</strong> Snake 99 Reborn works completely offline. You can play anywhere, anytime. Internet is only needed for Game Center leaderboards and in-app purchases.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I reset my progress?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Go to <strong>Settings</strong> in the app → Scroll to <strong>Statistics</strong> → Tap <strong>"Reset All Statistics"</strong>. This will reset your high score and highest level. Note: This action cannot be undone!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="troubleshooting">
+            <h2>TROUBLESHOOTING</h2>
+            <ul>
+                <li>If the app crashes, try closing and reopening it</li>
+                <li>Make sure you have the latest version from the App Store</li>
+                <li>Restart your device if you experience performance issues</li>
+                <li>For purchase issues, try "Restore Purchases" in Settings</li>
+                <li>Ensure you have enough storage space on your device</li>
+                <li>If Game Center isn't working, check your internet connection</li>
+            </ul>
+        </section>
+
+        <!-- Contact Again -->
+        <section class="contact-section">
+            <h2>🤔 Still Need Help?</h2>
+            <p>If you couldn't find the answer you were looking for, don't hesitate to reach out. We're happy to help!</p>
+            <a href="mailto:snrgwa@gmail.com?subject=Snake%2099%20Reborn%20Support" class="contact-btn">
+                ✉️ Contact Support
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+            </div>
+            <p class="copyright">© 2025 Snake 99 Reborn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
