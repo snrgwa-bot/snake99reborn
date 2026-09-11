@@ -332,7 +332,21 @@
                 text-align: center;
             }
         }
-    </style>
+    
+        /* Large displays: the shell was pinned at 1200px, which on a 2560px
+           monitor reads as a narrow column adrift in empty space. Widen the
+           chrome and scale the root font size; the prose column keeps its own
+           reading measure so legal copy never runs the full screen width. */
+        @media (min-width: 1500px) {
+            :root { font-size: 17.5px; }
+            .nav-container, .footer-content { max-width: 1280px; }
+            .content { max-width: 78ch; }
+        }
+        @media (min-width: 2000px) {
+            :root { font-size: 19px; }
+            .nav-container, .footer-content { max-width: 1500px; }
+        }
+</style>
 </head>
 <body>
     <!-- Navigation -->
